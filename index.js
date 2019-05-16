@@ -93,27 +93,30 @@ function trigger_sending(env){
     // plaintext body, comes in third place in the notification box
     text: 'Sent with Nodemailer !',
 
-    // Attachments, those can also be the email's html itself.
-    attachments: [{
-      filename: 't.png',
-      path: 'img\\10.jpg',
-      cid: 'unique@nodemailer.com' //same cid value as in the html img src
-    }],
+    // removes names from the attached files
+    attachDataUrls : false,
+
+    //Attachments, those can also be the email's html itself.
+    // attachments: [{
+    //   filename: 'nice image',
+    //   path: 'img\\10.jpg',
+    //   cid: 'unique@nodemailer.com' //same cid value as in the html img src
+    // }],
 
     // HTML body
     html: `<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <html>
       <head>
         <meta charset="utf-8">
-        <style>body{visibility:hidden;} img{margin:15px 0; padding:0;}</style>
+        <style>body{visibility:hidden;} a{color:red;} img{margin:15px 0; padding:0;}</style>
       </head>
       <body>
         <p><b>Greetings,`+ ` ` + env.name + `.</b></p>
         <p>I don't know what I should write, try using <a href="https://beefree.io/templates/">BEE</a> or <a href="https://www.kevinmandeville.com/blog/how-gmail-amp4email-support-impacts-email-design">AMP4EMAIL</a> to create cool newsletters.</p>
         <p>For more information about Node-Mailing: https://nodemailer.com/message/</p>
-        <p>For a clear-cut example check out <a href="https://github.com/nodemailer/nodemailer/blob/master/examples/full.js">this example</a></p>
-        <p>For a look at the code behind this Node mailer check out <a href="https://github.com/Jean-OIKONOMOU/auto-fire">this link</a></p>
-        <img src="cid:unique@nodemailer.com"/>
+        <p>For a clear-cut example check out <a href="https://github.com/nodemailer/nodemailer/blob/master/examples/full.js">this example</a>.</p>
+        <p>For a look at the code behind this Node mailer check out <a href="https://github.com/Jean-OIKONOMOU/auto-fire">this link</a>.</p>
+        <img src="https://t00.deviantart.net/I11X0IozTHbJnYGRw8KHw-e8gZM=/fit-in/300x900/filters:no_upscale():origin()/pre00/8ceb/th/pre/f/2017/269/5/a/marvel_vs__capcom_3__manuel___manny___calavera_by_kingoffiction-dbolxyi.png"/>
         <div>Sent on the </div>`+ ` ` + today + `
       </body>
     </html>`,

@@ -1,0 +1,9 @@
+https://codeburst.io/sending-an-email-using-nodemailer-gmail-7cfa0712a799
+https://medium.com/front-end-weekly/es6-cool-stuffs-a-new-js-string-with-template-literals-c23a8af11b2
+https://nodemailer.com/about/
+https://beefree.io/templates/
+https://blog.developer.atlassian.com/scripting-with-node/
+https://github.com/nodemailer/nodemailer/blob/master/examples/full.js
+https://nodemailer.com/message/
+https://nodemailer.com/message/attachments/
+https://community.nodemailer.com/using-embedded-images/
