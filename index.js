@@ -81,58 +81,41 @@ function trigger_sending(env){
   today = mm + '/' + dd + '/' + yyyy;
 
   transporter.sendMail({
+    // Soloxs is the title of notification
     from: 'Soloxs <johnsonharris8@gmail.com>',
 
     //email address of our recipient
     to: env.email,
 
-    // Subject of the message
+    // Subject of the message, comes in second place in the notification box
     subject: 'Hello, ' + env.name + '! ✔',
 
-    // plaintext body
+    // plaintext body, comes in third place in the notification box
     text: 'Sent with Nodemailer !',
 
-    // Attachments, those can also be the email html itself.
+    // Attachments, those can also be the email's html itself.
     attachments: [{
       filename: 't.png',
-      path: '/img/t.png',
+      path: 'img\\10.jpg',
       cid: 'unique@nodemailer.com' //same cid value as in the html img src
     }],
 
     // HTML body
-    html: `<!doctype html>
+    html: `<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <html>
       <head>
         <meta charset="utf-8">
-        <style>body{visibility:hidden}</style>
+        <style>body{visibility:hidden;} img{margin:15px 0; padding:0;}</style>
       </head>
       <body>
-        <p><b>Greetings,`+ ` ` + env.name + `</b></p>
-        <p>I don't know what I should write, try using BEE or AMP4EMAIL to create cool newsletters.</p>
+        <p><b>Greetings,`+ ` ` + env.name + `.</b></p>
+        <p>I don't know what I should write, try using <a href="https://beefree.io/templates/">BEE</a> or <a href="https://www.kevinmandeville.com/blog/how-gmail-amp4email-support-impacts-email-design">AMP4EMAIL</a> to create cool newsletters.</p>
         <p>For more information about Node-Mailing: https://nodemailer.com/message/</p>
         <img src="cid:unique@nodemailer.com"/>
         <div>Sent on the </div>`+ ` ` + today + `
       </body>
     </html>`,
 
-
-        // AMP4EMAIL
-        // amp: `<!doctype html>
-        // <html ⚡4email>
-        //   <head>
-        //     <meta charset="utf-8">
-        //     <style amp4email-boilerplate>body{visibility:hidden}</style>
-        //     <script async src="https://cdn.ampproject.org/v0.js"></script>
-        //     <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-        //   </head>
-        //   <body>
-        //     <p><b>Hello</b> to myself <amp-img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
-        //     <p>No embedded image attachments in AMP, so here's a linked nyan cat instead:<br/>
-        //       <amp-anim src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
-        //       <p>Sent on the </p>`+ ` ` + today + `
-        //   </body>
-        // </html>`,
-    // html: emailbody,
   }, (error, info) => {
     if (error) {
       return console.log(error);
