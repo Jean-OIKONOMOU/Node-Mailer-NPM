@@ -1,19 +1,3 @@
-const nodemailer = require('nodemailer');
-const csv = require('csvtojson/v1');
-const schedule = require('node-schedule');
-var testfile = './test_list.csv';
-//my test list
-var prodfile = './list.csv';
-//path to our production list
-var sendlist = [];
-function get_list(){
-     csv().fromFile(testfile) //or your production list
-     .on('json', (jsonObj) => {
-          sendlist.push(jsonObj);
-     })
-}
-get_list();
-
 module.exports = {
     generate: function(name){
         return `

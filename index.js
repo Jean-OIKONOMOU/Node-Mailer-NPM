@@ -69,6 +69,10 @@ function trigger_sending(env){
   //env passes our email and name to
   //customize the message
 
+  var emailbody = template.generate(env.first).toString();
+  //generates a string to send
+  //the personalized HTML
+
   //Timestamp
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -76,39 +80,58 @@ function trigger_sending(env){
   var yyyy = today.getFullYear();
   today = mm + '/' + dd + '/' + yyyy;
 
-  var emailbody = template.generate(env.first).toString();
-  //generates a string to send
-  //the personalized HTML
   transporter.sendMail({
     from: 'Soloxs <johnsonharris8@gmail.com>',
-    to: env.email, //email address of our recipient
-    subject: 'Hello, ' + env.name + ' !',
+
+    //email address of our recipient
+    to: env.email,
+
     // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔ Mr.' + env.name,
+    subject: 'Hello, ' + env.name + '! ✔',
 
-        // plaintext body
-        text: 'Hello to myself!',
+    // plaintext body
+    text: 'Sent with Nodemailer !',
 
-        // HTML body
-        html: `<p><b>Hello</b> to myself</p>
-        <p>Here's a nyan cat for you as an embedded attachment:<br/></p><p>Sent on the </p>`+ ` ` + today + ``,
+    // Attachments, those can also be the email html itself.
+    attachments: [{
+      filename: 't.png',
+      path: '/img/t.png',
+      cid: 'unique@nodemailer.com' //same cid value as in the html img src
+    }],
+
+    // HTML body
+    html: `<!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <style>body{visibility:hidden}</style>
+      </head>
+      <body>
+        <p><b>Greetings,`+ ` ` + env.name + `</b></p>
+        <p>I don't know what I should write, try using BEE or AMP4EMAIL to create cool newsletters.</p>
+        <p>For more information about Node-Mailing: https://nodemailer.com/message/</p>
+        <img src="cid:unique@nodemailer.com"/>
+        <div>Sent on the </div>`+ ` ` + today + `
+      </body>
+    </html>`,
+
 
         // AMP4EMAIL
-        amp: `<!doctype html>
-        <html ⚡4email>
-          <head>
-            <meta charset="utf-8">
-            <style amp4email-boilerplate>body{visibility:hidden}</style>
-            <script async src="https://cdn.ampproject.org/v0.js"></script>
-            <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-          </head>
-          <body>
-            <p><b>Hello</b> to myself <amp-img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
-            <p>No embedded image attachments in AMP, so here's a linked nyan cat instead:<br/>
-              <amp-anim src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
-              <p>Sent on the </p>`+ ` ` + today + `
-          </body>
-        </html>`,
+        // amp: `<!doctype html>
+        // <html ⚡4email>
+        //   <head>
+        //     <meta charset="utf-8">
+        //     <style amp4email-boilerplate>body{visibility:hidden}</style>
+        //     <script async src="https://cdn.ampproject.org/v0.js"></script>
+        //     <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+        //   </head>
+        //   <body>
+        //     <p><b>Hello</b> to myself <amp-img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
+        //     <p>No embedded image attachments in AMP, so here's a linked nyan cat instead:<br/>
+        //       <amp-anim src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
+        //       <p>Sent on the </p>`+ ` ` + today + `
+        //   </body>
+        // </html>`,
     // html: emailbody,
   }, (error, info) => {
     if (error) {
