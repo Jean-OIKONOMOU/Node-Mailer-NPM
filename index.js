@@ -111,6 +111,8 @@ function trigger_sending(env){
         <p><b>Greetings,`+ ` ` + env.name + `.</b></p>
         <p>I don't know what I should write, try using <a href="https://beefree.io/templates/">BEE</a> or <a href="https://www.kevinmandeville.com/blog/how-gmail-amp4email-support-impacts-email-design">AMP4EMAIL</a> to create cool newsletters.</p>
         <p>For more information about Node-Mailing: https://nodemailer.com/message/</p>
+        <p>For a clear-cut example check out <a href="https://github.com/nodemailer/nodemailer/blob/master/examples/full.js">this example</a></p>
+        <p>For a look at the code behind this Node mailer check out <a href="https://github.com/Jean-OIKONOMOU/auto-fire">this link</a></p>
         <img src="cid:unique@nodemailer.com"/>
         <div>Sent on the </div>`+ ` ` + today + `
       </body>
