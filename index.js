@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer');
 const csv = require('csvtojson/v1');
 const schedule = require('node-schedule');
 const template = require('./template.js');
+const chalk = require('chalk');
 
 const account = {
      user: 'johnsonharris8@gmail.com',
@@ -34,7 +35,7 @@ transporter.verify(function(error, success) {
   if (error) {
     console.log(error);
   } else {
-    console.log('Server is ready to take our messages');
+    console.log(chalk.blue.bgRed.bold('Server is ready to take our messages'));
     get_list();
     // trigger the whole app once the mail server is ready
   }
@@ -61,7 +62,7 @@ function set_message_delays(){
           if(message_increment >= sendlist.length){
                message_job.cancel();
                // stop our function when last message is sent
-          }
+          } 
     });
 }
 
@@ -125,6 +126,7 @@ function trigger_sending(env){
     if (error) {
       return console.log(error);
     }
-    console.log('Message sent: %s', info.messageId);
+    console.log(chalk.hex('#DEADED').bold('Message sent: %s'), info.messageId);
+    console.log(info);
   });
 }
