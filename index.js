@@ -6,8 +6,8 @@ const template = require('./template.js');
 const chalk = require('chalk');
 
 const account = {
-     user: 'johnsonharris8@gmail.com',
-     pass: 'bob99bob'
+     user: 'jean.oikonomou@gmail.com',
+     pass: 'C0M470S3F1SHF34STC0M470S3'
 }
 var transporter = nodemailer.createTransport({
      pool: true, //keeps the server connection open
@@ -83,7 +83,7 @@ function trigger_sending(env){
 
   transporter.sendMail({
     // Soloxs is the title of notification
-    from: 'Soloxs <johnsonharris8@gmail.com>',
+    from: 'Soloxs <jean.oikonomou@gmail.com>',
 
     //email address of our recipient
     to: env.email,
