@@ -6,8 +6,8 @@ const template = require('./template.js');
 const chalk = require('chalk');
 
 const account = {
-     user: 'jean.oikonomou@gmail.com',
-     pass: 'C0M470S3F1SHF34STC0M470S3'
+     user: 'johnsonharris8@gmail.com',
+     pass: 'bob99bob'
 }
 var transporter = nodemailer.createTransport({
      pool: true, //keeps the server connection open
